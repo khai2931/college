@@ -16,6 +16,9 @@
 
 `git commit -m "message"` - commit new changes to repository
 
+# Merging to main
+Just make a Pull Request on GitHub and follow the steps there.
+
 # Advice
 Always pull before push.
 
