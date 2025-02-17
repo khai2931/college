@@ -10,11 +10,14 @@
 
 `git checkout [name of branch]` - look at a branch
 
-`git branch [branch name]` - create a new branch
+`git branch [branch name]` - create a new branch (make sure to publish!)
 
 `git add *` - add all files to commit
 
 `git commit -m "message"` - commit new changes to repository
+
+# Merging to main
+Just make a Pull Request on GitHub and follow the steps there.
 
 # Advice
 Always pull before push.
