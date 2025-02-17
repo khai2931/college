@@ -14,8 +14,6 @@
 
 `git add *` - add all files to commit
 
-`git push` - update branch to your changes
-
 `git commit -m "message"` - commit new changes to repository
 
 # Advice
