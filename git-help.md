@@ -16,6 +16,8 @@
 
 `git push` - update branch to your changes
 
+`git commit -m "message"` - commit new changes to repository
+
 # Advice
 Always pull before push.
 
