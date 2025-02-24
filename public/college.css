@@ -1,0 +1,34 @@
+/*
+ * College Inclusiveness Search Team
+ * February 2025
+ */
+
+ body {
+  font-family: "Open Sans", serif;
+  margin-left: 50px;
+}
+
+h1 {
+  font-size: 5ch;
+}
+
+input {
+  font-size: 4.5ch;
+  width: 1000px;
+  border-radius: 10px;
+}
+
+.btn {
+  width: fit-content;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 4.5ch;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+
