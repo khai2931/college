@@ -1,6 +1,6 @@
 # college
 
-Leave any setup steps here (i.e. to run the website)
+Leave any setup steps here (i.e. to run the website).
 
 # Prerequisites
 - Node.js (for npm): https://nodejs.org/en/download
