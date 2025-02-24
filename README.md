@@ -9,9 +9,10 @@ Leave any setup steps here (i.e. to run the website).
 # Setup
 
 0. Open a New Terminal in this directory (preferably in VS Code)
-1. Run `npm install express sqlite3 sqlite multer` to install required dependancies
+1. Run `npm install nodemon express sqlite3 sqlite multer` to install required dependancies
 2. Run `nodemon` to load the website
 3. Go to http://localhost:8000/ to see the website running
+4. Hit CTRL+C in the terminal to quit the server
 
 
 # Database management
