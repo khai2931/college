@@ -16,6 +16,8 @@
 
 `git commit -m "message"` - commit new changes to repository
 
+`git push` - push changes to remote server
+
 # Merging to main
 Just make a Pull Request on GitHub and follow the steps there.
 

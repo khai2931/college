@@ -1,10 +1,14 @@
 /*
  * College Inclusiveness Search Team
  * February 2025
+ *
+ * This file gives functionality to the home page,
+ * mainly for searching colleges and showing suggested searches.
  */
 
 "use strict";
 
+// anonymous function that runs everything
 (function() {
   window.addEventListener("load", init);
 
@@ -12,8 +16,13 @@
    * Sets up event listeners for the buttons.
    */
   function init() {
-    // todo: initialize event listeners
-    id("search-btn").addEventListener("click", searchCollege);
+    qs("#search-bar .btn").addEventListener("click", searchCollege);
+    qs("#search-bar input").addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        searchCollege();
+      }
+    });
+    qs("#search-bar input").addEventListener("input", showSuggestions);
   }
 
   /**
@@ -21,20 +30,25 @@
    */
   function searchCollege() {
     let college = qs("input").value;
-    alert("You searched for " + college);
+    window.location.href = `filter.html?name=${college}`;
   }
 
   /* --- HELPER FUNCTIONS --- */
 
   /**
-   * Shows the view and hides all other views
-   * @param {string} view - the view to show
+   * Shows search suggestions based on input
    */
-  function toggleView(view) {
-    for (let i = 0; i < ALL_VIEWS.length; i++) {
-      id(ALL_VIEWS[i]).classList.add("hidden");
+  async function showSuggestions() {
+    let query = this.value;
+    let suggestions = await getRequest("/search/" + query, res => res.json());
+    id("suggestions").innerHTML = "";
+    for (let i = 0; i < suggestions.length; i++) {
+      let option = gen("option");
+      option.value = suggestions[i];
+      id("suggestions").appendChild(option);
+      option.setAttribute("role", "option");
+      option.setAttribute("tabindex", "0");
     }
-    id(view).classList.remove("hidden");
   }
 
   /**
@@ -52,28 +66,7 @@
       return res;
     } catch (err) {
       handleError();
-    }
-  }
-
-  /**
-   * returns result of POST request with extractFunc being
-   * either res => res.json() or res => res.text()
-   * @param {string} url - URL to fetch
-   * @param {object} body - body of POST request
-   * @param {function} extractFunc - res => res.json() or res => res.text()
-   * @returns {object | string | undefined} - res.json(), res.text(), or undefined
-   */
-  async function postRequest(url, body, extractFunc) {
-    try {
-      let res = await fetch(url, {
-        method: "POST",
-        body: body
-      });
-      await statusCheck(res);
-      res = await extractFunc(res);
-      return res;
-    } catch (err) {
-      handleError();
+      console.error("Post error: ", err);
     }
   }
 
@@ -81,7 +74,7 @@
    * Handles errors gracefully
    */
   function handleError() {
-
+    alert("There was an issue processing something. Please try again.");
   }
 
   /**
@@ -113,15 +106,6 @@
    */
   function qs(selector) {
     return document.querySelector(selector);
-  }
-
-  /**
-   * Returns all element matching selector.
-   * @param {string} selector - CSS query selector.
-   * @returns {object[]} - DOM object associated selector.
-   */
-  function qsa(selector) {
-    return document.querySelectorAll(selector);
   }
 
   /**
